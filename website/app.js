@@ -2,7 +2,7 @@
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth()+ 1 +'.'+ d.getDate()+'.'+ d.getFullYear();
 
 
 //create a get request on client side 
@@ -15,8 +15,8 @@ document.getElementById('generate').addEventListener('click' , giveData);
 
 // create function to receive  zip and feeling from the user 
 function giveData(){
-    const zipCode = document.getElementById('zip').Value;
-    const userFeeling = document.getElementById('feelings').Value;
+    const zipCode = document.getElementById('zip').value;
+    const userFeeling = document.getElementById('feelings').value;
     
     //new function to hold 3 parameters baseURL , zipCode , apiKey
     weather (baseURL,zipCode,apiKey)
@@ -37,8 +37,8 @@ function giveData(){
 }
 
 // GET web ApI function 
-const weather = async( baseURL ,zip ,key)=>{
-    const res = await fetch(baseURL , zip ,key)
+const weather = async( baseURL ,zip ,Key)=>{
+    const res = await fetch(baseURL , zip ,Key)
     try{
         const data =await res.json();
         console.log(data);
