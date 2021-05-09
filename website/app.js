@@ -38,7 +38,7 @@ function giveData(){
 
 // GET web ApI function 
 const weather = async( baseURL ,zip ,Key)=>{
-    const res = await fetch(baseURL , zip ,Key)
+    const res = await fetch(baseURL + zip +Key)
     try{
         const data =await res.json();
         console.log(data);
