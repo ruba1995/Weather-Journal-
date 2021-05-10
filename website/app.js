@@ -6,7 +6,7 @@ let newDate = d.getMonth()+ 1 +'.'+ d.getDate()+'.'+ d.getFullYear();
 
 
 //create a get request on client side 
-let baseURL = 'api.openweathermap.org/data/2.5/weather?q=zip='
+let baseURL = 'http://api.openweathermap.org/data/2.5/weather?q=zip='
 let apiKey ='9a3f38ecdf2a0144fa1517eab98d78c5'
 
 
@@ -17,9 +17,12 @@ document.getElementById('generate').addEventListener('click' , giveData);
 function giveData(){
     const zipCode = document.getElementById('zip').value;
     const userFeeling = document.getElementById('feelings').value;
+
+    //consol.log(`zip` , zipCode ,"userFeeling" , userFeeling)
+    baseURL=`http://api.openweathermap.org/data/2.5/weather?q=zip=${zipCode}&appid=${apiKey}`
     
     //new function to hold 3 parameters baseURL , zipCode , apiKey
-    weather (baseURL,zipCode,apiKey)
+    weather (baseURL)
 .then (function (data){
     console.log(data);
 
@@ -37,8 +40,8 @@ function giveData(){
 }
 
 // GET web ApI function 
-const weather = async( baseURL ,zip ,Key)=>{
-    const res = await fetch(baseURL + zip +Key)
+const weather = async( baseURL )=>{
+    const res = await fetch(baseURL )
     try{
         const data =await res.json();
         console.log(data);
