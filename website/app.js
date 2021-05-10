@@ -6,8 +6,8 @@ let newDate = d.getMonth()+ 1 +'.'+ d.getDate()+'.'+ d.getFullYear();
 
 
 //create a get request on client side 
-let baseURL = 'http://api.openweathermap.org/data/2.5/weather?q=zip='
-let apiKey ='9a3f38ecdf2a0144fa1517eab98d78c5'
+let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip='
+const apiKey ='&appid=9a3f38ecdf2a0144fa1517eab98d78c5&units=imperial'
 
 
 // event listener for generate 
@@ -19,20 +19,20 @@ function giveData(){
     const userFeeling = document.getElementById('feelings').value;
 
     //consol.log(`zip` , zipCode ,"userFeeling" , userFeeling)
-    baseURL=`http://api.openweathermap.org/data/2.5/weather?q=zip=${zipCode}&appid=${apiKey}`
+    //baseURL=`http://api.openweathermap.org/data/2.5/weather?q=zip=${zipCode}&appid=${apiKey}`
     
     //new function to hold 3 parameters baseURL , zipCode , apiKey
     weather (baseURL,zipCode,apiKey)
 .then (function (data){
     console.log(data);
 
-    //add data to post request 
+    //postdata to post request 
 
-    postData('/addData' ,{
-        data: newDate ,
-        temp : data.list[0].main.temp,
-        content :userFeeling, 
-    })
+    postData('/postData' ,{
+        date: newDate ,
+        temp : data.main.temp,
+        content :userFeeling,
+        })
 
     UI();
 })
@@ -78,9 +78,9 @@ const UI= async()=>{
     const request =await fetch('/allWeaterData');
     try{
         const allData= await request.json();
-        document.getElementById('date').innerHTML=`date : ${allData[0].date}`;
-        document.getElementById('temp').innerHTML=`the temperature is  : ${allData[0].temp}`;
-        document.getElementById('content').innerHTML=`my feeling is : ${allData[0].content}`;
+        document.getElementById('date').innerHTML=`date: ${allData.date}`;
+        document.getElementById('temp').innerHTML=`the temperature is : ${allData.temp}`;
+        document.getElementById('content').innerHTML=`my feeling is : ${allData.content}`;
     }catch(error){
         console.log('error',error);
     }
