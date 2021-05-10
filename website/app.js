@@ -22,7 +22,7 @@ function giveData(){
     baseURL=`http://api.openweathermap.org/data/2.5/weather?q=zip=${zipCode}&appid=${apiKey}`
     
     //new function to hold 3 parameters baseURL , zipCode , apiKey
-    weather (baseURL)
+    weather (baseURL,zipCode,apiKey)
 .then (function (data){
     console.log(data);
 
@@ -40,8 +40,8 @@ function giveData(){
 }
 
 // GET web ApI function 
-const weather = async( baseURL )=>{
-    const res = await fetch(baseURL )
+const weather = async( baseURL ,zip ,Key)=>{
+    const res = await fetch(baseURL + zip +Key)
     try{
         const data =await res.json();
         console.log(data);

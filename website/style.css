@@ -1,8 +1,18 @@
 body{
     font-family: 'Itim', cursive;
+    background-color: aquamarine;
 }
 
 #block{
     text-align: center;
     margin-top: 8%;
+}
+
+#the-header{
+    margin-top: 90px;
+}
+
+
+#zip {
+    width: 400px;
 }
